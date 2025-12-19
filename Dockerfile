@@ -21,6 +21,6 @@ ENV GCC_HARDENING="-fstack-protector-strong \
 # Use latest LTS version for OpenSSL
 RUN git clone --branch openssl-3.5.4 --depth 1 https://github.com/openssl/openssl.git /tmp/openssl && \
     cd /tmp/openssl && \
-    ./Configure ${ COMP_OPTIONS } ${ GCC_HARDENING } && \
+    ./Configure $COMP_OPTIONS $GCC_HARDENING && \
     make -j$(( $(nproc) + 1 )) && \
     make tests
