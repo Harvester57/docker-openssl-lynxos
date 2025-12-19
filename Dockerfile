@@ -23,5 +23,5 @@ ENV GCC_HARDENING="-fstack-protector-strong \
 # Use latest LTS version for OpenSSL
 RUN git clone --branch openssl-3.5.4 --depth 1 https://github.com/openssl/openssl.git /tmp/openssl && \
     cd /tmp/openssl && \
-    ./Configure generic32 --cross-compile-prefix=$CROSS_PREFIX $CONFIGURE_OPTIONS $COMP_OPTIONS $GCC_HARDENING && \
+    ./Configure linux-generic32 --cross-compile-prefix=$CROSS_PREFIX $CONFIGURE_OPTIONS $COMP_OPTIONS $GCC_HARDENING && \
     make -j$(( $(nproc) + 1 ))
