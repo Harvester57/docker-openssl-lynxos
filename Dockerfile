@@ -14,6 +14,6 @@ ENV COMP_OPTIONS "no-comp no-deprecated no-tls-deprecated-ec no-gost no-legacy e
 RUN git clone --branch openssl-3.5.4 --depth 1 https://github.com/openssl/openssl.git /tmp/openssl && \
     cd /tmp/openssl && \
     ./Configure LIST && \
-    ./Configure ${COMP_OPTIONS}} && \
+    ./Configure ${ COMP_OPTIONS } && \
     make -j$(( $(nproc) + 1 )) && \
     make tests
