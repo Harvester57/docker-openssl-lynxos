@@ -9,6 +9,8 @@ RUN apt-get update && \
 WORKDIR /tmp
 
 ENV SHELL="/bin/bash"
+ENV CROSS_PREFIX="i386-lynxos178-elf-"
+ENV CONFIGURE_OPTIONS="-DOPENSSL_SYS_LYNX -D_POSIX_THREADS -D_REENTRANT"
 ENV COMP_OPTIONS="no-comp no-deprecated no-tls-deprecated-ec no-gost no-legacy enable-pie no-psk no-shared no-dso no-engine no-async no-ssl no-tls1 no-tls1_1 no-dtls1"
 ENV GCC_HARDENING="-fstack-protector-strong \
                 -D_FORTIFY_SOURCE=3 \
@@ -21,6 +23,5 @@ ENV GCC_HARDENING="-fstack-protector-strong \
 # Use latest LTS version for OpenSSL
 RUN git clone --branch openssl-3.5.4 --depth 1 https://github.com/openssl/openssl.git /tmp/openssl && \
     cd /tmp/openssl && \
-    ./Configure $COMP_OPTIONS $GCC_HARDENING && \
-    make -j$(( $(nproc) + 1 )) && \
-    make tests
+    ./Configure generic32 --cross-compile-prefix=${CROSS_PREFIX} $COMP_OPTIONS $GCC_HARDENING && \
+    make -j$(( $(nproc) + 1 ))
