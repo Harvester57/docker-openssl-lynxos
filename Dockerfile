@@ -2,8 +2,8 @@ FROM gcc:15@sha256:27be068a2580bed7c32ccf2349352e29f86e0a5c8cda8c9c98c6b59e4ad98
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-RUN sudo apt-get update && \
-    sudo apt-get install git ca-certificates make -y --no-install-recommends && \
+RUN apt-get update && \
+    apt-get install git ca-certificates make -y --no-install-recommends && \
     update-ca-certificates
 
 WORKDIR /tmp
