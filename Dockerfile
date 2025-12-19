@@ -6,7 +6,6 @@ RUN sudo apt-get update && \
     sudo apt-get install git ca-certificates make -y --no-install-recommends && \
     update-ca-certificates
 
-
 WORKDIR /tmp
 
 # Use latest LTS version for OpenSSL
