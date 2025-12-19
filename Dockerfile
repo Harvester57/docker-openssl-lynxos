@@ -8,6 +8,7 @@ RUN apt-get update && \
 
 WORKDIR /tmp
 
+ENV SHELL="/bin/bash"
 ENV COMP_OPTIONS="no-comp no-deprecated no-tls-deprecated-ec no-gost no-legacy enable-pie no-psk no-shared no-dso no-engine no-async no-ssl no-tls1 no-tls1_1 no-dtls1"
 ENV GCC_HARDENING="-fstack-protector-strong \
                 -D_FORTIFY_SOURCE=3 \
